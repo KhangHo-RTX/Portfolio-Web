@@ -42,8 +42,8 @@ function initLoadingScreen() {
 // Fetch Discord profile once for loading screen, return parsed data
 function fetchDiscordProfileForLoading() {
     const USER_ID = '1514899451016249467';
-    const LANYARD_API = `https://api.lanyard.rest/v1/users/${USER_ID}`;
-    const DCDN_API = `https://dcdn.dstn.to/profile/${USER_ID}`;
+    const LANYARD_API = `https://api.lanyard.rest/v1/users/1514899451016249467${USER_ID}`;
+    const DCDN_API = `https://dcdn.dstn.to/profile/1514899451016249467${USER_ID}`;
 
     function fetchWithTimeout(url, ms) {
         const controller = new AbortController();
@@ -954,7 +954,7 @@ function initExperienceCards() {
         const membersEl = card.querySelector('[data-count="members"]');
         const onlineEl = card.querySelector('[data-count="online"]');
 
-        fetch(`https://discord.com/api/v9/invites/${inviteCode}?with_counts=true&with_expiration=true`)
+        fetch(`https://discord.com/api/v9/invites/https://discord.gg/jk4RFhyp5q${inviteCode}?with_counts=true&with_expiration=true`)
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
