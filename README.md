@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a1a,100:1a0a2e&height=220&section=header"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a1a,100:1a0a2e&height=200&section=header"/>
   
   <img src="https://readme-typing-svg.demolab.com?font=Inter&size=18&duration=2000&pause=500&color=A78BFA&center=true&vCenter=true&width=500&height=30&lines=✦+Anime+%26+Code+✦;✦+Vibe+Developer+✦;✦+12+years+old+✦" alt="Typing" />
   
