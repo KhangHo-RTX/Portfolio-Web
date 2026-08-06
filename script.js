@@ -44,8 +44,8 @@ function initLoadingScreen() {
 // Fetch Discord profile once for loading screen, return parsed data
 function fetchDiscordProfileForLoading() {
     const USER_ID = '1514899451016249467';
-    const LANYARD_API = `https://api.lanyard.rest/v1/users/1514899451016249467${USER_ID}`;
-    const DCDN_API = `https://dcdn.dstn.to/profile/1514899451016249467${USER_ID}`;
+    const LANYARD_API = `https://api.lanyard.rest/v1/users/${USER_ID}`;
+    const DCDN_API = `https://dcdn.dstn.to/profile/${USER_ID}`;
 
     function fetchWithTimeout(url, ms) {
         const controller = new AbortController();
@@ -308,7 +308,7 @@ function animateCount(el, target) {
             animate();
         }
     });
-
+}
 
 // ============================================
 // FLOATING MUSIC PLAYER LOGIC
