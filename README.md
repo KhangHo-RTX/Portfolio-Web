@@ -216,13 +216,7 @@
 
 ---
 
-<div align="center">
-  <h2 style="color: #a78bfa; font-weight: 300; letter-spacing: 8px; border-bottom: 1px solid rgba(167, 139, 250, 0.1); padding-bottom: 12px; display: inline-block;">
-    CONNECT
-  </h2>
-</div>
-
-<br/>
+## 📱 **CONNECT**
 
 <div align="center">
   <a href="https://github.com/KhangHo-RTX">
@@ -243,20 +237,14 @@
 
 ---
 
-<div align="center">
-  <h2 style="color: #a78bfa; font-weight: 300; letter-spacing: 8px; border-bottom: 1px solid rgba(167, 139, 250, 0.1); padding-bottom: 12px; display: inline-block;">
-    THANK YOU
-  </h2>
-</div>
-
-<br/>
+## 🙏 **THANK YOU**
 
 <div align="center">
   <table>
     <tr>
       <td align="center" style="padding: 20px 32px; background: rgba(167, 139, 250, 0.02); border-radius: 16px; border: 1px solid rgba(167, 139, 250, 0.05);">
         <p style="color: #e2e8f0;">
-          Xin gửi lời cảm ơn đến <b style="color: #a78bfa;">tiendung</b> 
+          Xin gửi lời cảm ơn đến <b style="color: #a78bfa;">tiendung</b>
         </p>
         <p style="color: #64748b;">
           đã tạo ra thiết kế nền tảng tuyệt vời này.
