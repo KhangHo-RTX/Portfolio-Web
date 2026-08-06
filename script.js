@@ -1132,6 +1132,3 @@ function initParticles() {
         }
     });
  }
-}
-
-
