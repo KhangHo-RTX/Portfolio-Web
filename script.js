@@ -308,7 +308,7 @@ function animateCount(el, target) {
             animate();
         }
     });
-}
+
 
 // ============================================
 // FLOATING MUSIC PLAYER LOGIC
