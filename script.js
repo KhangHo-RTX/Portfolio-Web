@@ -1,5 +1,4 @@
 /**
-Gửi những ng vọc web t lấy mà sài đi, api public k ph private nên k lo
  * API: https://api.lanyard.rest/v1/users/{user_id} để lấy rpc discord
  * API: https://dcdn.dstn.to/profile/{user_id} để lấy profile cơ bản
  * API: https://discord.com/api/v9/invites/{invite_code}?with_counts=true&with_expiration=true để lấy thông tin server discord
@@ -15,12 +14,10 @@ function initApp() {
     initScrollReveal();
     initSkillBars();
     initCountUp();
-    initParticles();
     initMusicPlayer();
     initDiscordProfile();
     initExperienceCards();
-    initGridToggle();      // Hàm đổi nền
-    initParticlesToggle(); // Hàm tắt/bật particles
+    initBgToggle();
 }
 
 function initLoadingScreen() {
@@ -264,7 +261,6 @@ function initMusicPlayer() {
     const audioToggle = document.getElementById('audio-toggle');
     const tooltipText = document.getElementById('track-tooltip-text');
 
-    // Playlist bài hát
     const playlist = [
         {
             name: "Earrings",
@@ -274,10 +270,9 @@ function initMusicPlayer() {
         {
             name: "Young Dumb And Broke",
             artist: "Khalid",
-            src: "music/Young_Dumb_And_Broke.mp3"  // Đổi tên file không dấu cách
+            src: "music/Young_Dumb_And_Broke.mp3"
         }
     ];
-
 
     let currentTrackIndex = 0;
     let isPlaying = false;
@@ -788,256 +783,47 @@ function initExperienceCards() {
     });
 }
 
-function initGridToggle() {
-    const gridBtn = document.getElementById('grid-toggle');
-    if (!gridBtn) return;
-    
-    const gridOverlay = document.createElement('div');
-    gridOverlay.className = 'bg-grid-overlay';
-    gridOverlay.innerHTML = '<div class="grid-pattern"></div>';
-    document.body.appendChild(gridOverlay);
+// ============================================
+// CHUYỂN NỀN VIDEO -> NỀN TĨNH
+// ============================================
 
-    const gridState = localStorage.getItem('grid_enabled');
-    if (gridState === 'true') {
-        gridOverlay.classList.add('active');
-        gridBtn.classList.add('active');
-        const video = document.querySelector('.bg-video');
-        if (video) video.style.display = 'none';
+function initBgToggle() {
+    const bgBtn = document.getElementById('bg-toggle');
+    if (!bgBtn) return;
+
+    // Tạo overlay nền tĩnh
+    const staticBg = document.createElement('div');
+    staticBg.className = 'static-bg';
+    staticBg.innerHTML = `
+        <div class="static-bg-pattern"></div>
+    `;
+    document.body.appendChild(staticBg);
+
+    // Kiểm tra trạng thái đã lưu
+    const bgState = localStorage.getItem('bg_static');
+    if (bgState === 'true') {
+        staticBg.classList.add('active');
+        bgBtn.classList.add('active');
+        document.querySelector('.bg-video').style.display = 'none';
         document.querySelectorAll('.bg-glow').forEach(el => el.style.display = 'none');
     }
 
-    gridBtn.addEventListener('click', () => {
-        const isActive = gridOverlay.classList.toggle('active');
-        gridBtn.classList.toggle('active');
-        localStorage.setItem('grid_enabled', isActive);
+    bgBtn.addEventListener('click', () => {
+        const isActive = staticBg.classList.toggle('active');
+        bgBtn.classList.toggle('active');
+        localStorage.setItem('bg_static', isActive);
         
         const video = document.querySelector('.bg-video');
         const glows = document.querySelectorAll('.bg-glow');
         
         if (isActive) {
-            if (video) video.style.display = 'none';
+            // Bật nền tĩnh
+            video.style.display = 'none';
             glows.forEach(el => el.style.display = 'none');
         } else {
-            if (video) video.style.display = 'block';
+            // Bật nền video
+            video.style.display = 'block';
             glows.forEach(el => el.style.display = 'block');
-        }
-    });
-}
-
-function initParticlesToggle() {
-    const particlesBtn = document.getElementById('particles-toggle');
-    const canvas = document.getElementById('particles-canvas');
-    if (!particlesBtn || !canvas) return;
-
-    const particlesState = localStorage.getItem('particles_enabled');
-    if (particlesState === 'false') {
-        canvas.classList.add('hidden');
-        particlesBtn.classList.remove('active');
-    } else {
-        canvas.classList.remove('hidden');
-        particlesBtn.classList.add('active');
-    }
-
-    particlesBtn.addEventListener('click', () => {
-        const isHidden = canvas.classList.toggle('hidden');
-        particlesBtn.classList.toggle('active');
-        localStorage.setItem('particles_enabled', isHidden ? 'false' : 'true');
-    });
-}
-
-function initParticles() {
-    const canvas = document.getElementById('particles-canvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let mouse = { x: null, y: null, radius: 150 };
-    let animationId;
-    
-    const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 35 : 70;
-    const colors = ['#a78bfa', '#818cf8', '#6366f1', '#8b5cf6', '#7c3aed', '#c084fc', '#e879f9'];
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resize();
-    
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(resize, 150);
-    });
-
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-
-    window.addEventListener('mouseleave', () => {
-        mouse.x = null;
-        mouse.y = null;
-    });
-
-    class Particle {
-        constructor() {
-            this.reset();
-            this.size = Math.random() * 4 + 1.5;
-            this.color = colors[Math.floor(Math.random() * colors.length)];
-            this.opacity = Math.random() * 0.7 + 0.2;
-            this.glowSize = this.size * (Math.random() * 2 + 2);
-        }
-
-        reset() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.speedX = (Math.random() - 0.5) * 0.6;
-            this.speedY = (Math.random() - 0.5) * 0.6;
-            this.originalX = this.x;
-            this.originalY = this.y;
-            this.wobble = Math.random() * Math.PI * 2;
-            this.wobbleSpeed = Math.random() * 0.02 + 0.005;
-            this.wobbleAmount = Math.random() * 30 + 15;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            this.wobble += this.wobbleSpeed;
-            this.x += Math.sin(this.wobble) * 0.15;
-            this.y += Math.cos(this.wobble) * 0.15;
-
-            if (this.x < -50 || this.x > canvas.width + 50 ||
-                this.y < -50 || this.y > canvas.height + 50) {
-                this.reset();
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-            }
-
-            if (mouse.x !== null && mouse.y !== null) {
-                const dx = this.x - mouse.x;
-                const dy = this.y - mouse.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < mouse.radius) {
-                    const force = (mouse.radius - dist) / mouse.radius;
-                    this.x += (dx / dist) * force * 3;
-                    this.y += (dy / dist) * force * 3;
-                    this.opacity = Math.min(this.opacity + 0.03, 1);
-                } else {
-                    this.opacity = Math.max(this.opacity - 0.005, 0.2);
-                }
-            }
-        }
-
-        draw() {
-            const gradient = ctx.createRadialGradient(
-                this.x, this.y, 0,
-                this.x, this.y, this.glowSize
-            );
-            const alpha = Math.floor(this.opacity * 180).toString(16).padStart(2, '0');
-            gradient.addColorStop(0, this.color + alpha);
-            gradient.addColorStop(1, this.color + '00');
-            
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.glowSize, 0, Math.PI * 2);
-            ctx.fillStyle = gradient;
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            const coreAlpha = Math.floor(this.opacity * 255).toString(16).padStart(2, '0');
-            ctx.fillStyle = this.color + coreAlpha;
-            ctx.fill();
-
-            if (this.size > 2.5) {
-                ctx.beginPath();
-                ctx.arc(this.x - this.size * 0.3, this.y - this.size * 0.3, this.size * 0.3, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255,255,255,' + (this.opacity * 0.4) + ')';
-                ctx.fill();
-            }
-        }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-
-    function drawConnections() {
-        const maxDist = 160;
-        const maxDistSq = maxDist * maxDist;
-
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const p1 = particles[i];
-                const p2 = particles[j];
-                const dx = p1.x - p2.x;
-                const dy = p1.y - p2.y;
-                const distSq = dx * dx + dy * dy;
-
-                if (distSq < maxDistSq) {
-                    const dist = Math.sqrt(distSq);
-                    const opacity = 0.15 * (1 - dist / maxDist);
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(167, 139, 250, ${opacity})`;
-                    ctx.lineWidth = 0.6;
-                    ctx.stroke();
-
-                    if (dist < maxDist * 0.4) {
-                        ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(167, 139, 250, ${opacity * 0.3})`;
-                        ctx.lineWidth = 2;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-    }
-
-    function drawStars() {
-        const starCount = 30;
-        const time = Date.now() * 0.0002;
-        for (let i = 0; i < starCount; i++) {
-            const x = (i * 137.5 + 50) % canvas.width;
-            const y = (i * 97.3 + 30) % canvas.height;
-            const size = Math.sin(i * 1.7 + time) * 0.8 + 0.8;
-            const opacity = Math.sin(i * 2.3 + time * 0.7) * 0.1 + 0.15;
-            
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(167, 139, 250, ${opacity})`;
-            ctx.fill();
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        drawStars();
-        drawConnections();
-        
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-
-        animationId = requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            cancelAnimationFrame(animationId);
-        } else {
-            animate();
         }
     });
 }
