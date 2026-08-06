@@ -270,7 +270,7 @@ function initMusicPlayer() {
         {
             name: "Young Dumb And Broke",
             artist: "Khalid",
-            src: "https://audio.jukehost.co.uk/019fd5c9-4f86-7101-97a1-b8ecdeeaa126"
+            src: "music/Young_Dumb_And_Broke.mp3"
         }
     ];
 
