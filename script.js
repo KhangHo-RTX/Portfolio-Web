@@ -297,7 +297,8 @@ function animateCount(el, target) {
     }
 
     requestAnimationFrame(update);
-}
+}  // <--- Hàm kết thúc ở đây
+
 
     // Pause when tab is hidden
     document.addEventListener('visibilitychange', () => {
