@@ -216,61 +216,29 @@
 
 ---
 
-## 📱 **CONNECT**
-
-<div align="center">
-  <a href="https://github.com/KhangHo-RTX">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=0a0a1a" />
-  </a>
-  <a href="mailto:khangho2403@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0a0a1a" />
-  </a>
-  <a href="https://www.facebook.com/khangho2403/">
-    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white&labelColor=0a0a1a" />
-  </a>
-  <a href="https://www.tiktok.com/@bolakenaok07">
-    <img src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white&labelColor=0a0a1a" />
-  </a>
-</div>
-
-<br/>
-
----
-
 ## 🙏 **THANK YOU**
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" style="padding: 20px 32px; background: rgba(167, 139, 250, 0.02); border-radius: 16px; border: 1px solid rgba(167, 139, 250, 0.05);">
-        <p style="color: #e2e8f0;">
-          Xin gửi lời cảm ơn đến <b style="color: #a78bfa;">tiendung</b>
-        </p>
-        <p style="color: #64748b;">
-          đã tạo ra thiết kế nền tảng tuyệt vời này.
-        </p>
-        <br/>
-        <p style="color: #e2e8f0;">
-          Và cảm ơn bạn đã ghé thăm! 🚀
-        </p>
-        <br/>
-        <img src="https://img.shields.io/badge/Designed_by-tiendung-8B5CF6?style=flat-square&labelColor=0a0a1a" />
-        <img src="https://img.shields.io/badge/Modified_by-KhangHo-FFFFFF?style=flat-square&labelColor=0a0a1a" />
-      </td>
-    </tr>
-  </table>
-</div>
+<p align="center" style="color: #e2e8f0;">
+  Xin cảm ơn <b style="color: #a78bfa;">tiendung</b> vì thiết kế nền tảng tuyệt vời ❤️
+</p>
+
+<p align="center" style="color: #64748b;">
+  Cảm ơn bạn đã ghé thăm!
+</p>
 
 <br/>
 
-<div align="center">
-  <sub style="color: #475569;">© 2026 · Built with ❤️</sub>
-  <br/>
-  <sub style="color: #334155; font-size: 12px; letter-spacing: 4px;">✦ DREAM BIG · CODE BIGGER ✦</sub>
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/Designed_by-tiendung-8B5CF6?style=flat-square" />
+  <img src="https://img.shields.io/badge/Modified_by-KhangHo-FFFFFF?style=flat-square" />
+</p>
 
 <br/>
 
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0a0a1a,100:1a0a2e&height=80&section=footer"/>
-</div>
+<p align="center" style="color: #475569;">
+  © 2026 · Built with ❤️
+</p>
+
+<p align="center" style="color: #334155; font-size: 13px; letter-spacing: 3px;">
+  ✦ DREAM BIG · CODE BIGGER ✦
+</p>
