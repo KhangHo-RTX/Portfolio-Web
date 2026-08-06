@@ -18,7 +18,7 @@
 ## 🚀 Giới thiệu
 
 Xin chào! Đây là portfolio cá nhân của tôi – **KhangHo (Tyler'gg)**.  
-Tôi sinh năm 2014, là một **vibe code non nớt mới nhú**, đang trên hành trình khám phá thế giới lập trình.
+Tôi sinh năm 2014, **là 1 vibe code có ước mơ trở thành 1 Developer**, tôi đang trong quá trình học và làm quen với: **Python, những ngôn ngữ làm web, web app**. Dù tôi còn nhỏ, nhưng tôi chỉ cần chăm chỉ và giữ vững đam mê thì tôi vẫn có thể thức hiện ước mơ mình muốn.
 
 Website này được xây dựng với mục đích giới thiệu bản thân, các dự án đã làm, kỹ năng và những nơi tôi tham gia cộng đồng.
 
