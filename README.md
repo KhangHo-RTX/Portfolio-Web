@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.pinimg.com/originals/1a/1a/8b/1a1a8b6e2b2d4f4d3d9c8f8b9a8f6d8e.gif" width="280" style="border-radius: 20px; border: 3px solid #a78bfa; box-shadow: 0 0 80px rgba(167, 139, 250, 0.2);" />
+  <video src="https://drive.google.com/file/d/1SDFkQRSFclpF2PpDIa8JssVGrPlTMBa_/view?usp=drivesdk" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
   
   <h1 style="font-size: 54px; margin: 16px 0 2px 0; background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; letter-spacing: 2px;">
     KhangHo — Tyler'gg
@@ -209,8 +209,7 @@
 ---
 
 <div align="center">
-  <img src="https://i.pinimg.com/originals/8b/6f/6d/8b6f6d7c9e2b4a6c8d9e2f4b6a8c9d0e.gif" width="420" style="border-radius: 20px; border: 2px solid rgba(167, 139, 250, 0.1); box-shadow: 0 0 60px rgba(167, 139, 250, 0.05);" />
-</div>
+  <video src="https://drive.google.com/file/d/1LkEnemEbhKMnkdVlG1xK9jd5ZVgvoPuc/view?usp=drivesdk" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
 
 <br/>
 
