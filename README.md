@@ -38,7 +38,7 @@
 <br/>
 
 <div align="center">
-  <table style="width: 60%;">
+  <table style="width: 50%;">
     <tr>
       <td align="right" style="color: #94a3b8; padding: 8px 16px;"><b>Name</b></td>
       <td style="color: #e2e8f0; padding: 8px 16px;">KhangHo</td>
@@ -46,14 +46,6 @@
     <tr>
       <td align="right" style="color: #94a3b8; padding: 8px 16px;"><b>Alias</b></td>
       <td style="color: #e2e8f0; padding: 8px 16px;">Tyler'gg</td>
-    </tr>
-    <tr>
-      <td align="right" style="color: #94a3b8; padding: 8px 16px;"><b>Born</b></td>
-      <td style="color: #e2e8f0; padding: 8px 16px;">2014</td>
-    </tr>
-    <tr>
-      <td align="right" style="color: #94a3b8; padding: 8px 16px;"><b>Location</b></td>
-      <td style="color: #e2e8f0; padding: 8px 16px;">🇻🇳 Vietnam</td>
     </tr>
   </table>
 </div>
@@ -264,10 +256,14 @@
     <tr>
       <td align="center" style="padding: 20px 32px; background: rgba(167, 139, 250, 0.02); border-radius: 16px; border: 1px solid rgba(167, 139, 250, 0.05);">
         <p style="color: #e2e8f0;">
-          Cảm ơn <b style="color: #a78bfa;">tiendung</b> đã tạo ra thiết kế này.
+          Xin gửi lời cảm ơn đến <b style="color: #a78bfa;">tiendung</b> 
         </p>
         <p style="color: #64748b;">
-          Cảm ơn bạn đã ghé thăm! 🚀
+          đã tạo ra thiết kế nền tảng tuyệt vời này.
+        </p>
+        <br/>
+        <p style="color: #e2e8f0;">
+          Và cảm ơn bạn đã ghé thăm! 🚀
         </p>
         <br/>
         <img src="https://img.shields.io/badge/Designed_by-tiendung-8B5CF6?style=flat-square&labelColor=0a0a1a" />
@@ -280,7 +276,7 @@
 <br/>
 
 <div align="center">
-  <sub style="color: #475569;">© 2026 KhangHo · Built with ❤️</sub>
+  <sub style="color: #475569;">© 2026 · Built with ❤️</sub>
   <br/>
   <sub style="color: #334155; font-size: 12px; letter-spacing: 4px;">✦ DREAM BIG · CODE BIGGER ✦</sub>
 </div>
