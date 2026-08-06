@@ -19,8 +19,8 @@ function initApp() {
     initMusicPlayer();
     initDiscordProfile();
     initExperienceCards();
-    initGridToggle();
-    initParticlesToggle();
+    initGridToggle();      // Hàm đổi nền
+    initParticlesToggle(); // Hàm tắt/bật particles
 }
 
 function initLoadingScreen() {
@@ -264,6 +264,7 @@ function initMusicPlayer() {
     const audioToggle = document.getElementById('audio-toggle');
     const tooltipText = document.getElementById('track-tooltip-text');
 
+    // Playlist bài hát
     const playlist = [
         {
             name: "Earrings",
@@ -273,9 +274,10 @@ function initMusicPlayer() {
         {
             name: "Young Dumb And Broke",
             artist: "Khalid",
-            src: "music/Young Dumb And Broke.mp3"
+            src: "music/Young_Dumb_And_Broke.mp3"  // Đổi tên file không dấu cách
         }
     ];
+
 
     let currentTrackIndex = 0;
     let isPlaying = false;
