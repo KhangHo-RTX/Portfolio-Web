@@ -1,5 +1,5 @@
 <div align="center">
-  <video src="https://drive.google.com/file/d/1SDFkQRSFclpF2PpDIa8JssVGrPlTMBa_/view?usp=drivesdk" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
+  <video src="https://drive.google.com/uc?export=download&id=1SDFkQRSFclpF2PpDIa8JssVGrPlTMBa_" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
   
   <h1 style="font-size: 54px; margin: 16px 0 2px 0; background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; letter-spacing: 2px;">
     KhangHo — Tyler'gg
@@ -209,12 +209,14 @@
 ---
 
 <div align="center">
-  <video src="https://drive.google.com/file/d/1LkEnemEbhKMnkdVlG1xK9jd5ZVgvoPuc/view?usp=drivesdk" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
+  <video src="https://drive.google.com/uc?export=download&id=1LkEnemEbhKMnkdVlG1xK9jd5ZVgvoPuc" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
+</div>
 
 <br/>
 
 ---
-## 📱 **CONNECT**
+
+📱 CONNECT
 
 <p align="center">
   <a href="https://github.com/KhangHo-RTX"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /></a>
@@ -225,7 +227,7 @@
 
 ---
 
-## 🙏 **THANK YOU**
+🙏 THANK YOU
 
 <p align="center" style="color: #e2e8f0;">
   Cảm ơn <b style="color: #a78bfa;">tiendung</b> vì thiết kế tuyệt vời ❤️
