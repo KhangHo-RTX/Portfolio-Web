@@ -1,5 +1,5 @@
 <div align="center">
-  <!-- ANIME 1: Video/GIF ngắn về anime (bạn tự thay link sau) -->
+  <!-- ANIME 1 -->
   <img src="https://i.pinimg.com/originals/1a/1a/8b/1a1a8b6e2b2d4f4d3d9c8f8b9a8f6d8e.gif" width="300" style="border-radius: 16px; border: 2px solid #a78bfa; box-shadow: 0 0 50px rgba(167, 139, 250, 0.15);" />
   
   <h1 style="font-size: 48px; margin: 12px 0 4px 0; background: linear-gradient(135deg, #a78bfa, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -27,14 +27,11 @@
 
 > Tôi sinh năm 2014, là 1 vibe code có ước mơ trở thành 1 Developer, tôi đang trong quá trình học và làm quen với: **Python, những ngôn ngữ làm web, web app**. Dù tôi còn nhỏ, nhưng tôi chỉ cần chăm chỉ và giữ vững đam mê thì tôi vẫn có thể thực hiện ước mơ mình muốn.
 
-<br/>
-
-| | |
+| Tên | KhangHo |
 |---|---|
-| **Tên** | KhangHo |
-| **Biệt danh** | Tyler'gg |
-| **Năm sinh** | 2014 |
-| **Quốc gia** | Vietnam |
+| Biệt danh | Tyler'gg |
+| Năm sinh | 2014 |
+| Quốc gia | Vietnam |
 
 ---
 
@@ -42,11 +39,11 @@
 
 | Vai trò | Tên | Link |
 |---|---|---|
-| **Original Design** | tiendung | [tdung.dev](https://tdung.dev) |
-| **Modified by** | KhangHo | [khanghodev.vercel.app](https://khanghodev.vercel.app) |
+| Original Design | tiendung | [tdung.dev](https://tdung.dev) |
+| Modified by | KhangHo | [khanghodev.vercel.app](https://khanghodev.vercel.app) |
 
-> 🎨 Thiết kế gốc thuộc về **tiendung** – một developer tài năng.  
-> 🛠️ Tôi (KhangHo) đã sử dụng và chỉnh sửa lại để phù hợp với bản thân.
+- 🎨 Thiết kế gốc thuộc về **tiendung** – một developer tài năng.
+- 🛠️ Tôi (KhangHo) đã sử dụng và chỉnh sửa lại để phù hợp với bản thân.
 
 ---
 
@@ -99,38 +96,33 @@
 ```
 
 portfolio/
-├── index.html          # Trang chính
-├── style.css           # Toàn bộ CSS
-├── script.js           # Toàn bộ JavaScript
-├── README.md           # Tài liệu giới thiệu
-├── images/             # Hình ảnh
-│   └── projects/       # Ảnh dự án
-├── music/              # File nhạc nền
-└── nen.mp4             # Video nền
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+├── images/
+│   └── projects/
+├── music/
+└── nen.mp4
 
 ```
 
 ---
 
-## ✨ **Mô tả Web**
+## ⚡ **Tính năng nổi bật**
 
-Website portfolio cá nhân với thiết kế hiện đại, dark mode, glassmorphism effects và smooth animations. Responsive trên mọi thiết bị.
+| 🌙 Dark Mode | ✨ Glassmorphism | 🎵 Music Player |
+|:---:|:---:|:---:|
+| Giao diện tối sang | Hiệu ứng kính mờ | Phát nhạc nền |
 
-| Tính năng | Mô tả |
-|-----------|-------|
-| 🌙 Dark Mode | Giao diện tối sang trọng |
-| ✨ Glassmorphism | Hiệu ứng kính mờ hiện đại |
-| 🎵 Music Player | Phát nhạc nền với sóng nhấp nhô |
-| 🎨 BG Switcher | Đổi nền video/tĩnh linh hoạt |
-| 📊 Skill Bars | Thanh tiến trình kỹ năng động |
-| 🎭 Discord Live | Live Profile & Activity |
+| 🎨 BG Switcher | 📊 Skill Bars | 🎭 Discord Live |
+|:---:|:---:|:---:|
+| Đổi nền video/tĩnh | Kỹ năng động | Profile & Activity |
 
 ---
 
-## 🎬 **ANIME 2**
-
-<!-- ANIME 2: Video/GIF ngắn về anime (bạn tự thay link sau) -->
 <div align="center">
+  <!-- ANIME 2 (đã xóa chữ) -->
   <img src="https://i.pinimg.com/originals/8b/6f/6d/8b6f6d7c9e2b4a6c8d9e2f4b6a8c9d0e.gif" width="400" style="border-radius: 16px; border: 1px solid rgba(167, 139, 250, 0.1);" />
 </div>
 
