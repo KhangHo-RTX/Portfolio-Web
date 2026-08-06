@@ -7,6 +7,8 @@ Gửi những ng vọc web t lấy mà sài đi, api public k ph private nên k 
 
 document.addEventListener('DOMContentLoaded', () => {
     initLoadingScreen();
+    // Other initialisations run AFTER loading screen dismisses
+    // (see initLoadingScreen → onReady callback)
 });
 
 function initApp() {
@@ -15,7 +17,7 @@ function initApp() {
     initScrollReveal();
     initSkillBars();
     initCountUp();
-    initParticles();
+    initParticles();           // Chỉ 1 lần
     initMusicPlayer();
     initDiscordProfile();
     initExperienceCards();
@@ -39,6 +41,7 @@ function initLoadingScreen() {
     });
 }
 
+// Fetch Discord profile once for loading screen, return parsed data
 function fetchDiscordProfileForLoading() {
     const USER_ID = '1514899451016249467';
     const LANYARD_API = `https://api.lanyard.rest/v1/users/${USER_ID}`;
@@ -81,27 +84,37 @@ function fetchDiscordProfileForLoading() {
     });
 }
 
+// ============================================
+// NAVIGATION
+// ============================================
+
 function initNavigation() {
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
     const links = document.querySelectorAll('.nav-link');
 
+    // Scroll effect
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
+
         if (scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+
+        // Active section highlight
         updateActiveNav();
     });
 
+    // Mobile toggle
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navLinks.classList.toggle('open');
     });
 
+    // Link clicks
     links.forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('active');
@@ -109,6 +122,7 @@ function initNavigation() {
         });
     });
 
+    // Close menu on outside click
     document.addEventListener('click', (e) => {
         if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
             navToggle.classList.remove('active');
@@ -137,6 +151,10 @@ function updateActiveNav() {
     });
 }
 
+// ============================================
+// PAGE TRANSITIONS (NAV CLICK ANIMATIONS)
+// ============================================
+
 function initPageTransitions() {
     const transitionOverlay = document.getElementById('page-transition');
     const allAnchors = document.querySelectorAll('a[href^="#"]');
@@ -147,29 +165,41 @@ function initPageTransitions() {
             const targetId = this.getAttribute('href');
             const target = document.querySelector(targetId);
             if (!target) return;
+
+            // Trigger the ripple transition
             triggerTransition(transitionOverlay, target);
         });
     });
 }
 
 function triggerTransition(overlay, targetSection) {
+    // Add active class to trigger animation
     overlay.classList.add('active');
+
+    // Add section fade-in animation to target
     targetSection.classList.remove('section-transitioning');
-    void targetSection.offsetWidth;
+    void targetSection.offsetWidth; // force reflow
     targetSection.classList.add('section-transitioning');
 
+    // Smooth scroll to target after a short delay
     setTimeout(() => {
         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
 
+    // Remove active after animation completes
     setTimeout(() => {
         overlay.classList.remove('active');
     }, 900);
 
+    // Clean up section animation class
     setTimeout(() => {
         targetSection.classList.remove('section-transitioning');
     }, 1200);
 }
+
+// ============================================
+// SCROLL REVEAL
+// ============================================
 
 function initScrollReveal() {
     const reveals = document.querySelectorAll(
@@ -192,6 +222,10 @@ function initScrollReveal() {
     reveals.forEach(el => observer.observe(el));
 }
 
+// ============================================
+// SKILL BARS ANIMATION
+// ============================================
+
 function initSkillBars() {
     const bars = document.querySelectorAll('.skill-bar-fill');
 
@@ -202,9 +236,11 @@ function initSkillBars() {
                     const bar = entry.target;
                     const width = bar.getAttribute('data-width');
                     bar.style.setProperty('--target-width', width);
+
                     setTimeout(() => {
                         bar.style.width = width + '%';
                     }, 200);
+
                     observer.unobserve(bar);
                 }
             });
@@ -214,6 +250,10 @@ function initSkillBars() {
 
     bars.forEach(bar => observer.observe(bar));
 }
+
+// ============================================
+// COUNT UP ANIMATION
+// ============================================
 
 function initCountUp() {
     const counters = document.querySelectorAll('.stat-number');
@@ -242,8 +282,11 @@ function animateCount(el, target) {
     function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
+
+        // Ease out
         const ease = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(ease * target);
+
         el.textContent = current;
 
         if (progress < 1) {
@@ -254,7 +297,22 @@ function animateCount(el, target) {
     }
 
     requestAnimationFrame(update);
-}
+}  // <--- Hàm kết thúc ở đây
+
+
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animationId);
+        } else {
+            animate();
+        }
+    });
+
+
+// ============================================
+// FLOATING MUSIC PLAYER LOGIC
+// ============================================
 
 function initMusicPlayer() {
     const player = document.getElementById('music-player');
@@ -264,23 +322,35 @@ function initMusicPlayer() {
     const audioToggle = document.getElementById('audio-toggle');
     const tooltipText = document.getElementById('track-tooltip-text');
 
+    // Playlist bài hát (mặc định ưu tiên file local của mày trước, có thêm link online dự phòng)
     const playlist = [
-        { name: "Earrings", artist: "Malcolm Todd", src: "music/Earrings.mp3" },
-        { name: "Young Dumb And Broke", artist: "Khalid", src: "music/Young Dumb And Broke.mp3" }
+        {
+            name: "Earrings",
+            artist: "Malcolm Todd",
+            src: "music/Earrings.mp3"
+        },
+        {
+            name: "Young Dumb And Broke",
+            artist: "Khalid",
+            src: "music/Young Dumb And Broke.mp3"
+        }
     ];
 
     let currentTrackIndex = 0;
     let isPlaying = false;
 
+    // Thiết lập âm lượng mặc định và BẮT BUỘC tắt tiếng (muted) để được autoplay
     audio.volume = 0.50;
     audio.muted = true;
 
+    // Tải bài hát
     function loadTrack(index) {
         const track = playlist[index];
         audio.src = track.src;
         tooltipText.textContent = `Đang phát: ${track.name} - ${track.artist}`;
     }
 
+    // Phát nhạc
     function playTrack() {
         return audio.play().then(() => {
             if (!audio.muted) {
@@ -296,12 +366,14 @@ function initMusicPlayer() {
         });
     }
 
+    // Tạm dừng nhạc
     function pauseTrack() {
         isPlaying = false;
         player.classList.remove('playing');
         audio.pause();
     }
 
+    // Bật tiếng (Unmute)
     function unmuteAudio() {
         if (audio.muted) {
             audio.muted = false;
@@ -311,12 +383,16 @@ function initMusicPlayer() {
         }
     }
 
+    // Toggle Play/Pause hoặc Mute/Unmute khi click vào nút
     audioToggle.addEventListener('click', (e) => {
         e.stopPropagation();
+        
         if (audio.muted) {
+            // Nếu đang tắt tiếng, click vào sẽ bật tiếng và phát
             unmuteAudio();
             playTrack().catch(() => {});
         } else {
+            // Nếu đã bật tiếng, click sẽ toggle phát/dừng
             if (isPlaying) {
                 pauseTrack();
             } else {
@@ -325,11 +401,15 @@ function initMusicPlayer() {
         }
     });
 
+    // Lắng nghe tương tác đầu tiên của user trên cửa sổ để bật tiếng (unmute)
     const handleFirstInteraction = () => {
         unmuteAudio();
+        // Phát nhạc nếu đang bị tạm dừng ngầm
         if (audio.paused) {
             playTrack().catch(() => {});
         }
+        
+        // Gỡ bỏ sự kiện sau khi đã bật tiếng thành công
         window.removeEventListener('click', handleFirstInteraction);
         window.removeEventListener('touchstart', handleFirstInteraction);
         window.removeEventListener('keydown', handleFirstInteraction);
@@ -339,29 +419,40 @@ function initMusicPlayer() {
     window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
     window.addEventListener('keydown', handleFirstInteraction);
 
+    // Khi hết bài, tự động chuyển bài tiếp theo
     audio.addEventListener('ended', () => {
         currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
         loadTrack(currentTrackIndex);
+        // Khi chuyển bài mới tự động thì giữ nguyên trạng thái đang chơi có tiếng
         playTrack().catch(() => {});
     });
 
+    // Khôi phục bài hát cuối cùng đã nghe từ localStorage (nếu có)
     const savedTrack = localStorage.getItem('music_track_index');
     if (savedTrack !== null) {
         currentTrackIndex = parseInt(savedTrack);
         if (currentTrackIndex >= playlist.length) currentTrackIndex = 0;
     }
 
+    // Lưu bài hát hiện tại trước khi thoát/reload trang
     window.addEventListener('beforeunload', () => {
         localStorage.setItem('music_track_index', currentTrackIndex);
     });
 
+    // Khởi tạo bài hát đầu tiên
     loadTrack(currentTrackIndex);
+    
+    // Cố gắng chạy autoplay ở chế độ MUTED ngay khi load trang (luôn được trình duyệt cho phép)
     audio.play().then(() => {
         console.log("Muted autoplay started successfully.");
     }).catch(err => {
         console.log("Muted autoplay blocked or failed:", err);
     });
 }
+
+// ============================================
+// DISCORD PROFILE
+// ============================================
 
 function initDiscordProfile() {
     const USER_ID = '1514899451016249467';
@@ -518,12 +609,14 @@ function initDiscordProfile() {
         const hasSpotify = listening_to_spotify && spotify;
         const hasRpc = !!rpc;
 
+        // Toggle grid layout
         if (hasSpotify && hasRpc) {
             els.activityCardGrid.classList.add('split');
         } else {
             els.activityCardGrid.classList.remove('split');
         }
 
+        // === RPC SLOT ===
         els.activityRpc.innerHTML = '';
         if (hasRpc) {
             let iconUrl = '';
@@ -553,6 +646,7 @@ function initDiscordProfile() {
             els.activityRpc.style.display = 'none';
         }
 
+        // === SPOTIFY SLOT ===
         els.activitySpotify.innerHTML = '';
         if (hasSpotify) {
             const elapsed = Date.now() - spotify.timestamps.start;
@@ -657,6 +751,8 @@ function initDiscordProfile() {
         renderActivities(activities, listening_to_spotify, spotify, discord_status);
     }
 
+    // Map the dcdn.dstn.to profile payload onto the shape that
+    // updateProfile() understands (originally written for a Lanyard-style API).
     function adaptDcdnProfile(data) {
         const user = data.user || {};
         const userProfile = data.user_profile || {};
@@ -666,6 +762,8 @@ function initDiscordProfile() {
             bannerColor = '#' + bannerColor.toString(16).padStart(6, '0');
         }
 
+        // dcdn is a static CDN: no live status / activities / spotify.
+        // Default to "offline" so the status dot renders a valid colour.
         return {
             discord_user: {
                 id: user.id,
@@ -731,6 +829,10 @@ function initDiscordProfile() {
     setInterval(fetchProfile, POLL_INTERVAL);
 }
 
+// ============================================
+// EXPERIENCE CARDS - DISCORD INVITE API
+// ============================================
+
 function initExperienceCards() {
     const cards = document.querySelectorAll('.exp-card[data-invite]');
 
@@ -776,10 +878,17 @@ function initExperienceCards() {
                 if (onlineEl) onlineEl.textContent = '—';
             });
     });
-}
+// ============================================
+// GRID BACKGROUND TOGGLE
+// ============================================
+
+// ============================================
+// GRID BACKGROUND TOGGLE
+// ============================================
 
 function initGridToggle() {
     const gridBtn = document.getElementById('grid-toggle');
+    
     const gridOverlay = document.createElement('div');
     gridOverlay.className = 'bg-grid-overlay';
     gridOverlay.innerHTML = '<div class="grid-pattern"></div>';
@@ -789,37 +898,71 @@ function initGridToggle() {
     if (gridState === 'true') {
         gridOverlay.classList.add('active');
         gridBtn.classList.add('active');
+        document.querySelector('.bg-video').style.display = 'none';
+        document.querySelectorAll('.bg-glow').forEach(el => el.style.display = 'none');
     }
 
     gridBtn.addEventListener('click', () => {
-        gridOverlay.classList.toggle('active');
+        const isActive = gridOverlay.classList.toggle('active');
         gridBtn.classList.toggle('active');
-        localStorage.setItem('grid_enabled', gridOverlay.classList.contains('active'));
+        localStorage.setItem('grid_enabled', isActive);
+        
+        const video = document.querySelector('.bg-video');
+        const glows = document.querySelectorAll('.bg-glow');
+        
+        if (isActive) {
+            video.style.display = 'none';
+            glows.forEach(el => el.style.display = 'none');
+        } else {
+            video.style.display = 'block';
+            glows.forEach(el => el.style.display = 'block');
+        }
+        // KHÔNG CHẠM VÀO PARTICLES
     });
 }
+
+// ============================================
+// PARTICLES TOGGLE (NÂNG CẤP ĐẸP HƠN)
+// ============================================
+
+// ============================================
+// PARTICLES TOGGLE
+// ============================================
 
 function initParticlesToggle() {
     const particlesBtn = document.getElementById('particles-toggle');
     const canvas = document.getElementById('particles-canvas');
 
+    // Kiểm tra trạng thái đã lưu
     const particlesState = localStorage.getItem('particles_enabled');
     if (particlesState === 'false') {
         canvas.classList.add('hidden');
         particlesBtn.classList.remove('active');
     } else {
+        canvas.classList.remove('hidden');
         particlesBtn.classList.add('active');
     }
 
     particlesBtn.addEventListener('click', () => {
-        canvas.classList.toggle('hidden');
+        const isHidden = canvas.classList.toggle('hidden');
         particlesBtn.classList.toggle('active');
-        localStorage.setItem('particles_enabled', !canvas.classList.contains('hidden'));
+        localStorage.setItem('particles_enabled', isHidden ? 'false' : 'true');
     });
 }
+
+// ============================================
+// PARTICLES - NÂNG CẤP ĐẸP HƠN
+// ============================================
 
 function initParticles() {
     const canvas = document.getElementById('particles-canvas');
     if (!canvas) return;
+
+    // Thêm dòng này để Particles luôn hiển thị khi load (trừ khi bị tắt)
+    const particlesState = localStorage.getItem('particles_enabled');
+    if (particlesState === 'false') {
+        canvas.classList.add('hidden');
+    }
 
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -843,6 +986,7 @@ function initParticles() {
         resizeTimeout = setTimeout(resize, 150);
     });
 
+    // Theo dõi chuột
     window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
@@ -905,6 +1049,7 @@ function initParticles() {
         }
 
         draw() {
+            // Glow
             const gradient = ctx.createRadialGradient(
                 this.x, this.y, 0,
                 this.x, this.y, this.glowSize
@@ -918,12 +1063,14 @@ function initParticles() {
             ctx.fillStyle = gradient;
             ctx.fill();
 
+            // Core
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             const coreAlpha = Math.floor(this.opacity * 255).toString(16).padStart(2, '0');
             ctx.fillStyle = this.color + coreAlpha;
             ctx.fill();
 
+            // Spark
             if (this.size > 2.5) {
                 ctx.beginPath();
                 ctx.arc(this.x - this.size * 0.3, this.y - this.size * 0.3, this.size * 0.3, 0, Math.PI * 2);
@@ -952,6 +1099,7 @@ function initParticles() {
                 if (distSq < maxDistSq) {
                     const dist = Math.sqrt(distSq);
                     const opacity = 0.15 * (1 - dist / maxDist);
+                    const alpha = Math.floor(opacity * 255).toString(16).padStart(2, '0');
                     
                     ctx.beginPath();
                     ctx.moveTo(p1.x, p1.y);
@@ -960,6 +1108,7 @@ function initParticles() {
                     ctx.lineWidth = 0.6;
                     ctx.stroke();
 
+                    // Đường kết nối có gradient
                     if (dist < maxDist * 0.4) {
                         ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
@@ -1012,4 +1161,5 @@ function initParticles() {
             animate();
         }
     });
-        }
+ }
+}
