@@ -263,14 +263,14 @@ function initMusicPlayer() {
 
     const playlist = [
         {
-            name: "Earrings",
-            artist: "Malcolm Todd",
-            src: "music/Earrings.mp3"
+            name: "Fall Out Boy",
+            artist: "Centuries",
+            src: "music/FallOutBoy.mp3"
         },
         {
             name: "Young Dumb And Broke",
             artist: "Khalid",
-            src: "music/Young_Dumb_And_Broke.mp3"
+            src: "music/YoungDumbAndBroke.mp3"
         }
     ];
 
