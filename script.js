@@ -263,15 +263,10 @@ function initMusicPlayer() {
 
     const playlist = [
         {
-            name: "Fall Out Boy",
-            artist: "Centuries",
-            src: "music/FallOutBoy.mp3"
+            name: "2 4 W/n",
+            artist: "W/n",
+            src: "music/24Wn.mp3"
         },
-        {
-            name: "Young Dumb And Broke",
-            artist: "Khalid",
-            src: "music/YoungDumbAndBroke.mp3"
-        }
     ];
 
     let currentTrackIndex = 0;
