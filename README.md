@@ -2,7 +2,7 @@
   <video src="https://drive.google.com/uc?export=download&id=1SDFkQRSFclpF2PpDIa8JssVGrPlTMBa_" width="420" autoplay loop muted playsinline style="border-radius: 16px; border: 2px solid rgba(167, 139, 250, 0.1);"></video>
   
   <h1 style="font-size: 54px; margin: 16px 0 2px 0; background: linear-gradient(135deg, #c084fc, #818cf8, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; letter-spacing: 2px;">
-    KhangHo — Tyler'gg
+    DzyKhdra
   </h1>
   
   <p style="color: #94a3b8; font-size: 20px; font-weight: 300; letter-spacing: 6px; margin: 0;">
@@ -12,7 +12,7 @@
   <br/>
   
   <p style="color: #64748b; font-size: 14px; letter-spacing: 1px;">
-    <a href="https://khanghodev.vercel.app" style="color: #818cf8; text-decoration: none;">Portfolio</a> 
+    <a href="https://dk.vercel.app" style="color: #818cf8; text-decoration: none;">Portfolio</a> 
     <span style="color: #334155; margin: 0 8px;">✦</span>
     <a href="https://tdung.dev" style="color: #818cf8; text-decoration: none;">Original Design</a> 
     <span style="color: #334155; margin: 0 8px;">✦</span>
@@ -73,8 +73,8 @@
       <td style="width: 40px; color: #334155;">✦</td>
       <td align="center" style="padding: 16px 24px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
         <b style="color: #94a3b8;">🛠️ MODIFIED</b><br/>
-        <span style="color: #ffffff; font-size: 22px; font-weight: 700;">KhangHo</span><br/>
-        <a href="https://khanghodev.vercel.app" style="color: #818cf8; font-size: 13px; text-decoration: none;">khanghodev.vercel.app →</a>
+        <span style="color: #ffffff; font-size: 22px; font-weight: 700;">DzyKhdra</span><br/>
+        <a href="https://khanghodev.vercel.app" style="color: #818cf8; font-size: 13px; text-decoration: none;">dk.vercel.app →</a>
       </td>
     </tr>
   </table>
@@ -84,7 +84,7 @@
 
 <div style="color: #64748b; font-size: 14px; text-align: center; line-height: 1.8;">
   🎨 Thiết kế gốc thuộc về <b style="color: #a78bfa;">tiendung</b> – một developer tài năng.<br/>
-  🛠️ Tôi (KhangHo) đã sử dụng và chỉnh sửa lại để phù hợp với bản thân.
+  🛠️ Tôi (DzyKhdra) đã sử dụng và chỉnh sửa lại để phù hợp với bản thân.
 </div>
 
 <br/>
