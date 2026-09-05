@@ -45,7 +45,7 @@
     </tr>
     <tr>
       <td align="right" style="color: #94a3b8; padding: 8px 16px;"><b>Alias</b></td>
-      <td style="color: #e2e8f0; padding: 8px 16px;">Tyler'gg</td>
+      <td style="color: #e2e8f0; padding: 8px 16px;">DzyKhdra</td>
     </tr>
   </table>
 </div>
